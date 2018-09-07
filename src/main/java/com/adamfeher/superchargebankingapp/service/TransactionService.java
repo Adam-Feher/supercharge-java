@@ -31,7 +31,7 @@ public class TransactionService implements BasicTransactionService {
 
     @Override
     public void transfer(Account senderAccount, Account receiverAccount, BigDecimal amount) {
-        if (!checkIfValidTransfer(senderAccount,receiverAccount,amount)) {
+        if (!checkIfValidTransfer(senderAccount,amount)) {
             throw new IllegalArgumentException("Amount is wrong or exceed sender limits");
         } else {
             senderAccount.setBalance(senderAccount.getBalance().subtract(amount));
@@ -42,7 +42,7 @@ public class TransactionService implements BasicTransactionService {
 
     }
 
-    private boolean checkIfValidTransfer(Account sender, Account receiver, BigDecimal amount) {
+    private boolean checkIfValidTransfer(Account sender, BigDecimal amount) {
         return accountService.checkAmountIsNotLessThanZero(amount) && accountService.checkBalanceNotExceedZero(sender, amount);
     }
 }

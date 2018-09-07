@@ -6,6 +6,7 @@ import com.adamfeher.superchargebankingapp.model.Transaction;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TransactionService implements BasicTransactionService {
     private AccountService accountService;
@@ -26,7 +27,9 @@ public class TransactionService implements BasicTransactionService {
 
     @Override
     public List<Transaction> getTransactionsByType(Account account, Transaction.TransactionDirection type) {
-        return null;
+        return account.getTransactions().stream()
+                .filter(transaction -> type.equals(transaction.getType()))
+                .collect(Collectors.toList());
     }
 
     @Override

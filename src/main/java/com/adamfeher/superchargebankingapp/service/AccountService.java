@@ -27,10 +27,6 @@ public class AccountService implements BasicAccountService {
         }
     }
 
-    @Override
-    public void transfer(Account senderAccount, Account receiverAccount, BigDecimal amount) {
-
-    }
 
     private boolean checkAmountIsNotLessThanZero(BigDecimal amount) {
         return amount.compareTo(BigDecimal.ZERO) <= 0;

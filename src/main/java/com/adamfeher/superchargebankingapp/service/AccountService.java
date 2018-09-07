@@ -8,6 +8,11 @@ public class AccountService implements BasicAccountService {
 
     @Override
     public void deposit(Account account, BigDecimal amount) {
+        if (amount.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Deposit amount can't be less than or equal to 0");
+        }else{
+            account.setBalance(account.getBalance().add(amount));
+        }
 
     }
 

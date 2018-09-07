@@ -5,14 +5,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Account {
+    private static long idCounter = 0;
+    private long id;
     private User owner;
     private BigDecimal balance;
     private List<Transaction> transactions;
 
     public Account(User owner) {
+        this.id = idCounter++;
         this.owner = owner;
         this.balance = BigDecimal.ZERO;
         this.transactions = new ArrayList<>();
+    }
+
+
+    public long getId() {
+        return id;
+    }
+
+    public static long getIdCounter() {
+        return idCounter;
     }
 
     public User getOwner() {

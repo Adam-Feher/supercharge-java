@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
+    private static long idCounter = 0;
+    private long id;
     private final String name;
     private String email;
     private String phoneNumber;
-    private List<Account> accounts = new ArrayList<Account>();
+    private List<Account> accounts = new ArrayList<>();
 
     public List<Account> getAccounts() {
         return accounts;
@@ -18,9 +20,18 @@ public class User {
     }
 
     public User(String name, String email, String phoneNumber) {
+        this.id = idCounter++;
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public static long getIdCounter() {
+        return idCounter;
     }
 
     public String getName() {

@@ -16,7 +16,7 @@ public class TransactionService implements BasicTransactionService {
 
     @Override
     public List<Transaction> getAllTransactions(Account account) {
-        return null;
+        return account.getTransactions();
     }
 
     @Override

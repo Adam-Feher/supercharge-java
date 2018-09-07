@@ -28,11 +28,11 @@ public class AccountService implements BasicAccountService {
     }
 
 
-    private boolean checkAmountIsNotLessThanZero(BigDecimal amount) {
+    public boolean checkAmountIsNotLessThanZero(BigDecimal amount) {
         return amount.compareTo(BigDecimal.ZERO) <= 0;
     }
 
-    private boolean checkBalanceNotExceedZero(Account account, BigDecimal amount) {
+    public boolean checkBalanceNotExceedZero(Account account, BigDecimal amount) {
         return account.getBalance().subtract(amount).compareTo(BigDecimal.ZERO) < 0;
     }
 }
